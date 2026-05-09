@@ -3,82 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Avenue | The Art of Illumination</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>Happy Anniversary Deepika Ji - DJ BEATS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a011a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Moving Headline */
+        .marquee-container {
+            background: linear-gradient(90deg, #ff0055, #7000ff);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        marquee {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Logo & Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .logo {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo i { margin-right: 10px; }
+
+        /* Anniversary Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: #ffd700;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Photo Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .photo-card {
+            background: #2a2a2a;
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #000;
+            border-top: 2px solid #ffd700;
+        }
+
+        .btn-wish {
+            background: #ffd700;
+            color: #000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-wish:hover {
+            background: #fff;
+            box-shadow: 0 0 20px #ffd700;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Floating Hearts Animation */
+        .hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">LUXURY AVENUE</div>
-            <p class="tagline">PREMIUM LIGHTING BY DEEPANSHU</p>
-        </div>
-    </nav>
+    <div class="marquee-container">
+        <marquee>🎉 DJ BEATS KI TRAF SE HAPPY ANNIVERSARY DEEPIKA JI 🎉 WISHING YOU A LIFETIME OF HAPPINESS AND LOVE! 🎉</marquee>
+    </div>
 
-    <header class="hero">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <h3>ESTD 2026</h3>
-            <h1>Elegance In Every Detail</h1>
-            <p>Premium Chandeliers & Hand-Crafted Lighting for Luxury Interiors.</p>
-            <a href="#gallery" class="btn-gold">Explore Collection</a>
+    <header>
+        <div class="logo">
+            <i class="fas fa-headphones-alt"></i>DJ BEATS
         </div>
+        <p style="color: #ffd700; letter-spacing: 5px;">PRESENTS</p>
     </header>
 
-    <section id="gallery" class="gallery-container">
-        <div class="section-title">
-            <span>Our Signature Collection</span>
-            <h2>Exquisite Jhumar Designs</h2>
-            <div class="accent-line"></div>
-        </div>
-
-        <div class="gallery-grid">
-            <div class="item card-wide">
-                <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=1000" alt="Jhumar 1">
-                <div class="overlay-text">Royal Crystal Series</div>
-            </div>
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1517331156700-3c241d2b4d83?q=80&w=1000" alt="Jhumar 2">
-                <div class="overlay-text">Modern Spiral</div>
-            </div>
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1520699049698-acd2fccb8cc8?q=80&w=1000" alt="Jhumar 3">
-                <div class="overlay-text">Golden Heritage</div>
-            </div>
-
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1542728928-1413d1894ed1?q=80&w=1000" alt="Jhumar 4">
-                <div class="overlay-text">Minimalist Loft</div>
-            </div>
-            <div class="item card-tall">
-                <img src="https://images.unsplash.com/photo-1571403535790-25679ba0a5c4?q=80&w=1000" alt="Jhumar 5">
-                <div class="overlay-text">Art Deco Special</div>
-            </div>
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=1000" alt="Jhumar 6">
-                <div class="overlay-text">Classic Victorian</div>
-            </div>
-
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1000" alt="Jhumar 7">
-                <div class="overlay-text">Contemporary Wave</div>
-            </div>
-            <div class="item">
-                <img src="https://images.unsplash.com/photo-1582531393039-38374f6345ec?q=80&w=1000" alt="Jhumar 8">
-                <div class="overlay-text">Crystal Drop</div>
-            </div>
-        </div>
+    <section class="hero">
+        <h1>Happy Anniversary</h1>
+        <h2 style="font-size: 2.5rem;">Deepika Ji & Mahi Ji</h2>
+        <p>A beautiful journey of love and togetherness.</p>
     </section>
 
-    <footer>
-        <div class="footer-box">
-            <h2>LUXURY AVENUE</h2>
-            <p>Signature Designs | High-End Quality | Global Inspiration</p>
-            <div class="contact-short">Deepanshu | Founder & Creative Director</div>
-            <p class="copy">&copy; 2026 LUXURY AVENUE. All Rights Reserved.</p>
+    <div class="gallery">
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240711.jpg')">Photo 1</div>
         </div>
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240730.jpg')">Photo 2</div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240732.jpg')">Photo 3</div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240728.jpg')">Photo 4</div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240726.jpg')">Photo 5</div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-placeholder" style="background-image: url('1000240720.jpg')">Photo 6</div>
+        </div>
+    </div>
+
+    <footer>
+        <h2 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: #ffd700;">Lots of Love</h2>
+        <p>From: DJ BEATS FAMILY</p>
+        <button class="btn-wish" onclick="celebrate()">Click to Celebrate!</button>
     </footer>
+
+    <script>
+        function celebrate() {
+            alert("Wishing you both a very Happy Marriage Anniversary! Keep shining together! ✨");
+        }
+    </script>
 
 </body>
 </html>
