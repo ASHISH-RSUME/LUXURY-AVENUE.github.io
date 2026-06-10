@@ -10,17 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #fffaf0;
+            overflow-x: hidden;
         }
         .font-royal {
             font-family: 'Cinzel', serif;
         }
         .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1600&auto=format&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
@@ -37,19 +40,11 @@
             background: linear-gradient(45deg, #b38728, #bf953f);
             box-shadow: 0px 4px 15px rgba(179, 135, 40, 0.4);
         }
-        /* 3D Tilt Dynamic Effect */
         .card-3d {
             transition: transform 0.2s ease-out;
             transform-style: preserve-3d;
             perspective: 1000px;
         }
-        /* Glassmorphism Effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-        }
-        /* Start Screen Overlay */
         #overlay {
             position: fixed;
             inset: 0;
@@ -59,6 +54,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            transition: opacity 0.5s ease;
         }
         .shimmer {
             animation: shine 2s infinite linear;
@@ -72,7 +68,7 @@
 </head>
 <body class="text-gray-800 selection:bg-amber-200">
 
-    <!-- 1. Play Invitation Preloader Screen -->
+    <!-- 1. Play Invitation Preloader Screen (For Reel Style Music Sync) -->
     <div id="overlay" class="text-center px-4">
         <div class="text-amber-400 text-5xl mb-4 animate-bounce">
             <i class="fa-solid fa-om"></i>
@@ -83,7 +79,7 @@
         <button onclick="playInvitation()" class="gold-btn text-white font-bold px-10 py-4 rounded-full text-lg shadow-2xl transform hover:scale-110 transition duration-300">
             <i class="fa-solid fa-play mr-2 animate-pulse"></i> Open Invitation
         </button>
-        <p class="text-stone-400 text-xs mt-4 tracking-wide">Click to experience with music & video</p>
+        <p class="text-stone-400 text-xs mt-4 tracking-wide">Click to experience with music & smooth animations</p>
     </div>
 
     <!-- Background Traditional Music -->
@@ -91,7 +87,6 @@
         <source src="YOUR_MUSIC_LINK_HERE.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Main Content (Saves After Overlay Close) -->
     <!-- Hero Section -->
     <header class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-4 py-16 relative">
         <div class="absolute top-6 text-amber-400 font-royal text-2xl tracking-widest drop-shadow">
@@ -99,22 +94,22 @@
         </div>
         
         <div class="mt-4 w-full max-w-2xl mx-auto">
-            <!-- AI Video / Kids Video Showcase Section -->
-            <div class="w-full max-w-lg mx-auto mb-6 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-400 bg-black">
+            <!-- AI Video Section / If you have the video file -->
+            <div data-aos="zoom-in" data-aos-duration="1200" class="w-full max-w-md mx-auto mb-6 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-400 bg-black">
                 <video id="invitationVideo" loop muted playsinline class="w-full h-auto aspect-video object-cover">
                     <source src="YOUR_VIDEO_LINK_HERE.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
 
-            <!-- Baby Picture & Name Overlay style -->
-            <div class="inline-block bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-amber-400/30 shadow-lg mb-4">
+            <!-- Baby Name Block -->
+            <div data-aos="fade-down" data-aos-duration="1000" class="inline-block bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-amber-400/30 shadow-lg mb-4">
                 <h2 class="font-royal text-2xl md:text-3xl font-bold text-amber-300 tracking-wide drop-shadow-md">SHIVANSH</h2>
             </div>
             
-            <p class="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-2">Jai Shree Shiv Parvati</p>
-            <h1 class="font-royal text-5xl md:text-7xl font-bold gold-text mb-4 drop-shadow-lg">Kuan Poojan</h1>
-            <p class="text-base md:text-lg text-gray-200 max-w-xl mx-auto font-light leading-relaxed">
+            <p data-aos="fade-up" data-aos-duration="1200" class="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-2">Jai Shree Shiv Parvati</p>
+            <h1 data-aos="fade-up" data-aos-duration="1400" class="font-royal text-5xl md:text-7xl font-bold gold-text mb-4 drop-shadow-lg">Kuan Poojan</h1>
+            <p data-aos="fade-up" data-aos-duration="1600" class="text-base md:text-lg text-gray-200 max-w-xl mx-auto font-light leading-relaxed">
                 Join us for a sacred prayer ceremony seeking blessings of health, happiness, prosperity and a bright future.
             </p>
         </div>
@@ -134,8 +129,8 @@
         </div>
     </header>
 
-    <!-- Countdown Section -->
-    <section class="bg-stone-900 text-white py-10 px-4 shadow-xl">
+    <!-- Countdown Section (Smooth Fade-In Effect) -->
+    <section class="bg-stone-900 text-white py-10 px-4 shadow-xl" data-aos="fade-up" data-aos-duration="1000">
         <div class="max-w-4xl mx-auto text-center">
             <h3 class="font-royal text-amber-400 text-xl mb-4 tracking-wider">The Sacred Ceremony Begins In</h3>
             <div class="grid grid-cols-4 gap-3 max-w-md mx-auto">
@@ -159,9 +154,9 @@
         </div>
     </section>
 
-    <!-- Event Details Section with 3D Tilt Card layout -->
+    <!-- Event Details Section (Scroll Animations Included) -->
     <section id="details" class="py-16 px-4 max-w-5xl mx-auto">
-        <div class="text-center mb-12">
+        <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="font-royal text-4xl font-bold text-amber-800 mb-2">कार्यक्रम और आमंत्रण</h2>
             <div class="w-24 h-1 bg-amber-600 mx-auto rounded-full"></div>
             <p class="mt-4 text-gray-600 max-w-xl mx-auto">हमारे घर आए नन्हे मेहमान के स्वागत और कुआँ पूजन के पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं।</p>
@@ -169,7 +164,7 @@
 
         <div class="grid md:grid-cols-2 gap-8 items-stretch mb-12">
             <!-- Card 1: Schedule -->
-            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl">
+            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl" data-aos="fade-right" data-aos-duration="1200">
                 <div>
                     <div class="flex items-center justify-between mb-6">
                         <h4 class="font-royal text-2xl font-bold text-amber-800">Date & Time</h4>
@@ -196,7 +191,7 @@
             </div>
 
             <!-- Card 2: Venue -->
-            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl">
+            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl" data-aos="fade-left" data-aos-duration="1200">
                 <div>
                     <div class="flex items-center justify-between mb-6">
                         <h4 class="font-royal text-2xl font-bold text-amber-800">Venue (स्थान)</h4>
@@ -216,7 +211,7 @@
         </div>
 
         <!-- Family Relations Section -->
-        <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-l-4 border-amber-600 max-w-3xl mx-auto hover:shadow-xl">
+        <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-l-4 border-amber-600 max-w-3xl mx-auto hover:shadow-xl" data-aos="zoom-in" data-aos-duration="1200">
             <h3 class="font-royal text-xl md:text-2xl font-bold text-amber-800 text-center mb-6">With Warm Regards: The Panchal Family</h3>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
                 <div class="p-2 bg-stone-50 rounded-xl border border-stone-100">
@@ -247,8 +242,8 @@
         </div>
     </section>
 
-    <!-- RSVP / Best Wishes Section -->
-    <section class="bg-amber-50/50 py-12 px-4 border-t border-b border-amber-100 mb-28">
+    <!-- RSVP Section with Smooth Upward Slide -->
+    <section class="bg-amber-50/50 py-12 px-4 border-t border-b border-amber-100 mb-28" data-aos="fade-up" data-aos-duration="1000">
         <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-xl border border-amber-100">
             <h3 class="font-royal text-2xl text-center font-bold text-amber-800 mb-2">RSVP & Blessings</h3>
             <form id="rsvpForm" class="space-y-4">
@@ -267,20 +262,17 @@
         </div>
     </section>
 
-    <!-- Fixed Contact Action Bar at Bottom (Sticky Layout) -->
+    <!-- Sticky Bottom Navigation - Fixed Calling Buttons -->
     <div class="fixed bottom-0 left-0 w-full bg-stone-900/95 backdrop-blur-md border-t border-amber-500/30 shadow-2xl z-50 py-3 px-4">
         <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
-            <!-- Call Button 1 -->
             <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
                 <i class="fa-solid fa-phone text-lg mb-1"></i>
                 <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Akash</span>
             </a>
-            <!-- Call Button 2 -->
             <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
                 <i class="fa-solid fa-phone-flip text-lg mb-1"></i>
                 <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Family</span>
             </a>
-            <!-- WhatsApp Button -->
             <a href="https://wa.me/917827760221?text=Kuan%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Shivansh%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-xl transition shadow-lg">
                 <i class="fa-brands fa-whatsapp text-xl mb-1"></i>
                 <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-medium">WhatsApp</span>
@@ -295,23 +287,28 @@
         <p>&copy; 2026 Kuan Poojan Invitation.</p>
     </footer>
 
-    <!-- Logic Scripts for Interactivity -->
+    <!-- Scripts for Interactivity and AOS Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Play Overlay Logic (Fixes browser audio constraints)
+        // Init AOS Animation Library
+        AOS.init({
+            once: true // Animation scroll karne par sirf ek baar chalegi, lag-free experience ke liye
+        });
+
+        // Trigger Overlay Closure & Play Media
         function playInvitation() {
             document.getElementById('overlay').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('overlay').style.display = 'none';
             }, 500);
             
-            // Play Audio & Video Sync
             const music = document.getElementById('bgMusic');
             const video = document.getElementById('invitationVideo');
-            music.play().catch(e => console.log("Audio play blocked: ", e));
-            video.play().catch(e => console.log("Video play blocked: ", e));
+            music.play().catch(e => console.log("Audio constraints: ", e));
+            video.play().catch(e => console.log("Video constraints: ", e));
         }
 
-        // 3D Tilt Logic on Mouse Hover
+        // 3D Card Hover Interaction
         document.querySelectorAll('.card-3d').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -319,7 +316,7 @@
                 const y = e.clientY - rect.top;
                 const xc = rect.width / 2;
                 const yc = rect.height / 2;
-                const angleX = (yc - y) / 15; // Rotate strength
+                const angleX = (yc - y) / 15;
                 const angleY = (x - xc) / 15;
                 card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
             });
@@ -328,7 +325,7 @@
             });
         });
 
-        // Target Date Countdown (June 22, 2026)
+        // Live Countdown Timer (Target: June 22, 2026)
         const targetDate = new Date("June 22, 2026 16:00:00").getTime();
 
         const countdown = setInterval(function() {
