@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -38,17 +37,28 @@
             background: linear-gradient(45deg, #b38728, #bf953f);
             box-shadow: 0px 4px 15px rgba(179, 135, 40, 0.4);
         }
-        /* Preloader Styles */
-        #preloader {
+        /* 3D Tilt Dynamic Effect */
+        .card-3d {
+            transition: transform 0.2s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        /* Start Screen Overlay */
+        #overlay {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #1c1917;
+            inset: 0;
+            background: #1c1917;
             z-index: 9999;
             display: flex;
-            flex-col: true;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
         }
         .shimmer {
             animation: shine 2s infinite linear;
@@ -62,33 +72,49 @@
 </head>
 <body class="text-gray-800 selection:bg-amber-200">
 
-    <!-- Preloader Section -->
-    <div id="preloader" class="flex flex-col text-center px-4">
-        <div class="animate-spin text-amber-400 text-5xl mb-4">
+    <!-- 1. Play Invitation Preloader Screen -->
+    <div id="overlay" class="text-center px-4">
+        <div class="text-amber-400 text-5xl mb-4 animate-bounce">
             <i class="fa-solid fa-om"></i>
         </div>
-        <h2 class="font-royal text-3xl md:text-5xl gold-text font-bold tracking-widest shimmer">
+        <h1 class="font-royal text-3xl md:text-5xl gold-text font-bold tracking-widest shimmer mb-8">
             Kuan Poojan Celebration
-        </h2>
-        <p class="text-amber-200/60 tracking-widest mt-2 text-xs uppercase">Loading Invitation...</p>
+        </h1>
+        <button onclick="playInvitation()" class="gold-btn text-white font-bold px-10 py-4 rounded-full text-lg shadow-2xl transform hover:scale-110 transition duration-300">
+            <i class="fa-solid fa-play mr-2 animate-pulse"></i> Open Invitation
+        </button>
+        <p class="text-stone-400 text-xs mt-4 tracking-wide">Click to experience with music & video</p>
     </div>
 
+    <!-- Background Traditional Music -->
+    <audio id="bgMusic" loop>
+        <source src="YOUR_MUSIC_LINK_HERE.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Main Content (Saves After Overlay Close) -->
     <!-- Hero Section -->
-    <header class="hero-bg h-screen flex flex-col justify-center items-center text-center px-4 relative">
+    <header class="hero-bg min-h-screen flex flex-col justify-center items-center text-center px-4 py-16 relative">
         <div class="absolute top-6 text-amber-400 font-royal text-2xl tracking-widest drop-shadow">
             <i class="fa-solid fa-om"></i>
         </div>
         
-        <div class="mt-8">
-            <!-- Baby Picture Frame -->
-            <div class="w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full border-4 border-amber-400 p-1 bg-white/20 backdrop-blur shadow-xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Shivansh" class="w-full h-full object-cover rounded-full">
+        <div class="mt-4 w-full max-w-2xl mx-auto">
+            <!-- AI Video / Kids Video Showcase Section -->
+            <div class="w-full max-w-lg mx-auto mb-6 rounded-2xl overflow-hidden shadow-2xl border-4 border-amber-400 bg-black">
+                <video id="invitationVideo" loop muted playsinline class="w-full h-auto aspect-video object-cover">
+                    <source src="YOUR_VIDEO_LINK_HERE.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
-            <h2 class="font-royal text-2xl md:text-3xl font-bold text-amber-300 drop-shadow mb-2">SHIVANSH</h2>
+
+            <!-- Baby Picture & Name Overlay style -->
+            <div class="inline-block bg-white/10 backdrop-blur-md px-6 py-2 rounded-full border border-amber-400/30 shadow-lg mb-4">
+                <h2 class="font-royal text-2xl md:text-3xl font-bold text-amber-300 tracking-wide drop-shadow-md">SHIVANSH</h2>
+            </div>
             
             <p class="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-2">Jai Shree Shiv Parvati</p>
             <h1 class="font-royal text-5xl md:text-7xl font-bold gold-text mb-4 drop-shadow-lg">Kuan Poojan</h1>
-            <p class="text-lg md:text-xl text-gray-200 max-w-xl mx-auto font-light">
+            <p class="text-base md:text-lg text-gray-200 max-w-xl mx-auto font-light leading-relaxed">
                 Join us for a sacred prayer ceremony seeking blessings of health, happiness, prosperity and a bright future.
             </p>
         </div>
@@ -99,8 +125,8 @@
             <div class="h-[1px] bg-amber-400 w-full"></div>
         </div>
 
-        <a href="#details" class="gold-btn text-white font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105">
-            View Details
+        <a href="#details" class="gold-btn text-white font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition">
+            View Invitation Details
         </a>
 
         <div class="absolute bottom-24 animate-bounce">
@@ -133,7 +159,7 @@
         </div>
     </section>
 
-    <!-- Event Details Section -->
+    <!-- Event Details Section with 3D Tilt Card layout -->
     <section id="details" class="py-16 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-12">
             <h2 class="font-royal text-4xl font-bold text-amber-800 mb-2">कार्यक्रम और आमंत्रण</h2>
@@ -143,7 +169,7 @@
 
         <div class="grid md:grid-cols-2 gap-8 items-stretch mb-12">
             <!-- Card 1: Schedule -->
-            <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between">
+            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl">
                 <div>
                     <div class="flex items-center justify-between mb-6">
                         <h4 class="font-royal text-2xl font-bold text-amber-800">Date & Time</h4>
@@ -156,11 +182,11 @@
                         </li>
                         <li class="flex justify-between items-center border-b pb-2">
                             <span class="font-semibold">पूजन (Poojan):</span>
-                            <span>4:00 PM</span>
+                            <span class="text-amber-800 font-medium">4:00 PM</span>
                         </li>
                         <li class="flex justify-between items-center border-b pb-2">
                             <span class="font-semibold">भोज (Dinner):</span>
-                            <span>6:00 PM Onwards</span>
+                            <span class="text-amber-800 font-medium">6:00 PM Onwards</span>
                         </li>
                     </ul>
                 </div>
@@ -170,14 +196,14 @@
             </div>
 
             <!-- Card 2: Venue -->
-            <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between">
+            <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between hover:shadow-2xl">
                 <div>
                     <div class="flex items-center justify-between mb-6">
                         <h4 class="font-royal text-2xl font-bold text-amber-800">Venue (स्थान)</h4>
                         <i class="fa-solid fa-map-location-dot text-3xl text-amber-600"></i>
                     </div>
                     <h5 class="text-xl font-bold text-gray-800 mb-2">Shiv Parvati Dharamshala</h5>
-                    <p class="text-gray-600 leading-relaxed mb-4">
+                    <p class="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                         Block D, Street Number 4,<br>
                         Jyoti Nagar Extension, Block C,<br>
                         Jyoti Nagar, Shahdara, Delhi, 110093
@@ -190,38 +216,40 @@
         </div>
 
         <!-- Family Relations Section -->
-        <div class="bg-white p-8 rounded-2xl shadow-md border-l-4 border-amber-600 max-w-3xl mx-auto">
-            <h3 class="font-royal text-2xl font-bold text-amber-800 text-center mb-6">With Warm Regards: The Panchal Family</h3>
+        <div class="card-3d bg-white p-8 rounded-2xl shadow-md border-l-4 border-amber-600 max-w-3xl mx-auto hover:shadow-xl">
+            <h3 class="font-royal text-xl md:text-2xl font-bold text-amber-800 text-center mb-6">With Warm Regards: The Panchal Family</h3>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <p class="font-bold text-gray-800 text-base">Akash</p>
+                <div class="p-2 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-gray-800 text-sm md:text-base">Akash</p>
                     <p class="text-xs text-amber-700">(Father)</p>
                 </div>
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <p class="font-bold text-gray-800 text-base">Pooja</p>
+                <div class="p-2 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-gray-800 text-sm md:text-base">Pooja</p>
                     <p class="text-xs text-amber-700">(Mother)</p>
                 </div>
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <p class="font-bold text-gray-800 text-base">Mr. Sohanpal</p>
+                <div class="p-2 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-gray-800 text-sm md:text-base">Mr. Sohanpal</p>
                     <p class="text-xs text-amber-700">(Grandfather)</p>
                 </div>
-                <div class="p-2 bg-stone-50 rounded-xl">
-                    <p class="font-bold text-gray-800 text-base">Smt. Devendari</p>
+                <div class="p-2 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-gray-800 text-sm md:text-base">Smt. Devendari</p>
                     <p class="text-xs text-amber-700">(Mother)</p>
                 </div>
             </div>
             
             <div class="mt-6 border-t pt-4 text-center">
-                <p class="text-sm font-semibold text-gray-500 mb-2">Our Children</p>
-                <p class="text-gray-800 font-bold"><i class="fa-solid fa-child text-amber-600 mr-1"></i> Shivansh / Yash (Son)</p>
-                <p class="text-gray-800 font-bold mt-1"><i class="fa-solid fa-child-dress text-amber-600 mr-1"></i> Prisha / Savi (Daughter)</p>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Our Children</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6">
+                    <p class="text-gray-800 font-bold text-sm md:text-base"><i class="fa-solid fa-child text-amber-600 mr-1"></i> Shivansh / Yash <span class="text-xs text-amber-700 font-normal">(Son)</span></p>
+                    <p class="text-gray-800 font-bold text-sm md:text-base"><i class="fa-solid fa-child-dress text-amber-600 mr-1"></i> Prisha / Savi <span class="text-xs text-amber-700 font-normal">(Daughter)</span></p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- RSVP / Best Wishes Section -->
-    <section class="bg-amber-50/50 py-12 px-4 border-t border-b border-amber-100 mb-24">
-        <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
+    <section class="bg-amber-50/50 py-12 px-4 border-t border-b border-amber-100 mb-28">
+        <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-xl border border-amber-100">
             <h3 class="font-royal text-2xl text-center font-bold text-amber-800 mb-2">RSVP & Blessings</h3>
             <form id="rsvpForm" class="space-y-4">
                 <div>
@@ -239,15 +267,15 @@
         </div>
     </section>
 
-    <!-- Fixed Premium Contact Action Bar (Bottom Navigation) -->
+    <!-- Fixed Contact Action Bar at Bottom (Sticky Layout) -->
     <div class="fixed bottom-0 left-0 w-full bg-stone-900/95 backdrop-blur-md border-t border-amber-500/30 shadow-2xl z-50 py-3 px-4">
         <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
-            <!-- Calling Button 1 -->
+            <!-- Call Button 1 -->
             <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
                 <i class="fa-solid fa-phone text-lg mb-1"></i>
                 <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Akash</span>
             </a>
-            <!-- Calling Button 2 -->
+            <!-- Call Button 2 -->
             <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
                 <i class="fa-solid fa-phone-flip text-lg mb-1"></i>
                 <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Family</span>
@@ -267,18 +295,40 @@
         <p>&copy; 2026 Kuan Poojan Invitation.</p>
     </footer>
 
-    <!-- Scripts for Preloader and Timer -->
+    <!-- Logic Scripts for Interactivity -->
     <script>
-        // Preloader fadeout
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
+        // Play Overlay Logic (Fixes browser audio constraints)
+        function playInvitation() {
+            document.getElementById('overlay').style.opacity = '0';
             setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 1200); // 1.2 seconds tak preloader chalega
+                document.getElementById('overlay').style.display = 'none';
+            }, 500);
+            
+            // Play Audio & Video Sync
+            const music = document.getElementById('bgMusic');
+            const video = document.getElementById('invitationVideo');
+            music.play().catch(e => console.log("Audio play blocked: ", e));
+            video.play().catch(e => console.log("Video play blocked: ", e));
+        }
+
+        // 3D Tilt Logic on Mouse Hover
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const angleX = (yc - y) / 15; // Rotate strength
+                const angleY = (x - xc) / 15;
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
         });
 
-        // Set Target Countdown Date
+        // Target Date Countdown (June 22, 2026)
         const targetDate = new Date("June 22, 2026 16:00:00").getTime();
 
         const countdown = setInterval(function() {
@@ -306,7 +356,7 @@
 
         document.getElementById('rsvpForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your blessings for baby Shivansh! 🙏✨');
+            alert('Thank you for your beautiful blessings for Shivansh! 🙏✨');
             this.reset();
         });
     </script>
