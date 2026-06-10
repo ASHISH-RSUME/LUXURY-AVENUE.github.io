@@ -3,84 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuan Poojan | Shivansh</title>
+    <title>Manav | Kua Poojan Animated Invitation</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f7f4eb; color: #2c3e50; overflow-x: hidden; }
-        .font-royal { font-family: 'Cinzel', serif; }
-        .scroll-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 40px 16px; }
-        #invitation-overlay { position: fixed; inset: 0; background: #f7f4eb; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f4eb; /* Soft cream base like image 1000257866.jpg */
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+        .font-royal {
+            font-family: 'Cinzel', serif;
+        }
+        .scroll-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 16px;
+        }
+        /* Elegant Border Accent line */
+        .elegant-divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #2c5234, transparent);
+            margin: 15px auto;
+        }
+        /* Preloader Cover style */
+        #invitation-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(247, 244, 235, 0.95), rgba(247, 244, 235, 0.98));
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Falling Green Leaves System Styles */
+        .leaf {
+            position: absolute;
+            background-image: url('https://www.transparentpng.com/thumb/leaf/green-tea-leaf-png-clipart-9Vz8Xg.png'); /* Green leaves theme */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 1. Opening Cover -->
-    <div id="invitation-overlay">
-        <div class="animate-pulse mb-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Krishna_flute.jpg/300px-Krishna_flute.jpg" class="w-32 h-32 rounded-full border-4 border-amber-600 shadow-xl">
+    <!-- 1. Interactive Opening Preloader Cover -->
+    <div id="invitation-overlay" class="text-center px-4">
+        <div class="text-emerald-800 text-5xl mb-4 animate-pulse">
+            <i class="fa-solid fa-child"></i>
         </div>
-        <h1 class="font-royal text-2xl text-emerald-900 font-bold mb-10">Kuan Poojan Invitation</h1>
-        <button onclick="unlockInvitation()" class="bg-emerald-900 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-emerald-950 transition">
-            Open Invitation
+        <h1 class="font-royal text-2xl md:text-4xl text-emerald-900 font-bold tracking-widest mb-2">
+            Kua Poojan Invitation
+        </h1>
+        <p class="text-gray-600 text-sm md:text-base mb-10 tracking-wide font-light">Of Mr. Jignesh & Mrs. Anita's Son</p>
+        
+        <button onclick="unlockInvitation()" class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white font-bold tracking-widest uppercase px-10 py-3.5 rounded-full text-base shadow-xl transform hover:scale-105 transition duration-300">
+            <i class="fa-solid fa-envelope-open mr-2"></i> Open Invitation
         </button>
     </div>
 
-    <!-- 2. Scrollable Sections -->
-    <div id="scroll-wrapper">
+    <!-- Hidden Audio Node for Background Custom Track -->
+    <audio id="inviteMusic" loop>
+        <source src="YOUR_MUSIC_LINK_HERE.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Falling Green Leaves Container -->
+    <div id="leaves-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
+
+    <!-- Scrollytelling Layout Canvas Wrapper -->
+    <div id="scroll-wrapper" class="w-full">
         
-        <!-- Hero Section with Krishna Ji -->
-        <section class="scroll-section">
-            <div class="text-center panel-reveal">
-                <!-- Krishna Ji Image -->
-                <div class="mb-8">
-                    <img src="https://img.freepik.com/free-vector/lord-krishna-illustration_23-2149454657.jpg" class="w-48 h-48 mx-auto border-4 border-amber-500 rounded-2xl shadow-2xl mb-4">
-                    <p class="text-xs text-emerald-800 font-bold tracking-widest uppercase">|| श्री गणेशाय नमः ||</p>
+        <!-- MODULE 1: LANDING BANNER & MAIN DISPLAY VIDEO -->
+        <section class="scroll-section bg-gradient-to-b from-[#efece3] to-[#f7f4eb]">
+            <div class="text-center px-4 max-w-xl mx-auto panel-reveal">
+                <!-- Video Section Overlay Ring Frame -->
+                <div class="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-full border-4 border-emerald-700 p-1 bg-white shadow-2xl overflow-hidden mb-6">
+                    <video id="invitationVideo" loop muted playsinline class="w-full h-full object-cover rounded-full">
+                        <source src="YOUR_VIDEO_LINK_HERE.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <h1 class="font-royal text-5xl font-black text-emerald-950 mb-2">Kuan Poojan</h1>
-                <p class="text-gray-600 uppercase tracking-widest text-sm">of our son</p>
-                <h2 class="font-royal text-4xl font-extrabold text-amber-700 mt-2">SHIVANSH</h2>
+                
+                <p class="text-sm tracking-widest uppercase font-semibold text-emerald-800">Cordially invite you to grace the occasion of</p>
+                <h1 class="font-royal text-5xl md:text-6xl font-black text-emerald-950 mt-2 mb-1">Kua Poojan</h1>
+                <div class="elegant-divider"></div>
+                
+                <p class="text-xs uppercase text-gray-400 tracking-widest">of their son</p>
+                <h2 class="font-royal text-3xl md:text-4xl font-extrabold text-amber-700 tracking-wide mt-1 mb-6">MANAV</h2>
+                
+                <div class="text-gray-400 text-xs mt-12 animate-bounce">
+                    <span class="block tracking-widest uppercase mb-1">Scroll to view details</span>
+                    <i class="fa-solid fa-chevron-down text-emerald-700 text-sm"></i>
+                </div>
             </div>
         </section>
 
-        <!-- Parents Name -->
+        <!-- MODULE 2: REVEAL HOST NAMES -->
         <section class="scroll-section">
-            <div class="text-center panel-reveal bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-emerald-800">
-                <h2 class="font-royal text-3xl font-bold text-gray-800">Akash & Pooja</h2>
-                <p class="mt-4 text-gray-600">Aap sabhi s-parivar padhar kar balak Shivansh ko apna ashirwad pradan karein.</p>
+            <div class="text-center px-6 max-w-xl mx-auto panel-reveal bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border-t-4 border-emerald-800">
+                <i class="fa-solid fa-people-roof text-4xl text-emerald-700 mb-4"></i>
+                <h3 class="text-gray-400 text-xs uppercase tracking-widest mb-1">Invitation From</h3>
+                <h2 class="font-royal text-2xl md:text-3xl font-bold text-gray-800 mb-4">Mr. Jignesh & Mrs. Anita</h2>
+                <div class="elegant-divider"></div>
+                <p class="text-gray-600 font-light text-sm md:text-base leading-relaxed">
+                    Hamare yahan aaye naye khushi ke avsar par, jal devta ki puja aur parmpara ko nibhane ke liye aapka aagaman hamare liye saubhagya ki baat hogi. S-parivar padhar kar balak Manav ko apna ashirwad pradan karein.
+                </p>
             </div>
         </section>
 
-        <!-- Date & Venue -->
-        <section class="scroll-section">
-            <div class="text-center panel-reveal bg-white p-8 rounded-[2rem] shadow-xl">
-                <h2 class="font-royal text-2xl font-bold mb-4">Date & Time</h2>
-                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                    <p class="text-4xl font-bold text-emerald-900">22 June 2026</p>
-                    <p class="text-amber-800 font-bold">4:00 PM</p>
+        <!-- MODULE 3: EXACT TIMINGS DOCK -->
+        <section class="scroll-section bg-[#efece3]/40">
+            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-white p-8 rounded-[2rem] shadow-xl">
+                <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-100">
+                    <i class="fa-regular fa-clock text-xl text-emerald-800"></i>
                 </div>
-                <h2 class="font-royal text-2xl font-bold mt-8 mb-4">Venue</h2>
-                <p class="font-bold">Shiv Parvati Dharamshala</p>
-                <p class="text-gray-500 text-sm">Opp. Football Ground, Shahdara, Delhi</p>
+                <h2 class="font-royal text-2xl text-gray-800 font-bold mb-6">Date & Time</h2>
+                
+                <!-- Display Grid Layout mimicking 1000257866.jpg grid design -->
+                <div class="grid grid-cols-3 items-center justify-center border-t border-b border-gray-200 py-4 my-2">
+                    <div class="text-center">
+                        <span class="block font-royal text-4xl font-bold text-emerald-900">17</span>
+                    </div>
+                    <div class="text-center border-l border-r border-gray-200 py-1">
+                        <span class="block text-xs uppercase tracking-widest text-emerald-800 font-semibold">THURSDAY</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-xs uppercase tracking-widest text-gray-500 font-medium">JANUARY</span>
+                    </div>
+                </div>
+                
+                <p class="text-amber-800 font-semibold text-sm mt-4 uppercase tracking-widest"><i class="fa-solid fa-bell mr-1"></i> At 3:00 PM</p>
             </div>
         </section>
+
+        <!-- MODULE 4: VENUE BLOCK WITH EMBED MAP LINK -->
+        <section class="scroll-section">
+            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-white p-8 rounded-[2rem] shadow-xl border-b-4 border-emerald-800">
+                <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-100">
+                    <i class="fa-solid fa-location-dot text-xl text-emerald-800"></i>
+                </div>
+                <h2 class="font-royal text-2xl text-gray-800 font-bold mb-4">Venue (स्थान)</h2>
+                <h3 class="text-base font-bold text-emerald-950 mb-2 leading-snug">Shri desi lohana vidhyarthi bhavan</h3>
+                <p class="text-gray-500 text-xs md:text-sm leading-relaxed mb-6">
+                    Opp. football ground Kankaria Ahmedabad,<br>
+                    Vedano Thakkar
+                </p>
+                <a href="https://maps.google.com/?q=Shri+desi+lohana+vidhyarthi+bhavan+Kankaria+Ahmedabad" target="_blank" class="inline-block w-full bg-gradient-to-r from-emerald-800 to-teal-900 hover:from-emerald-900 hover:to-teal-950 text-white font-medium py-2.5 px-6 rounded-xl transition duration-300 shadow-md text-sm">
+                    <i class="fa-solid fa-map mr-1"></i> Direction on Google Maps
+                </a>
+            </div>
+        </section>
+
     </div>
 
-    <!-- Fixed Bottom Buttons -->
-    <div class="fixed bottom-0 w-full bg-white p-4 flex justify-between shadow-2xl border-t z-50">
-        <a href="tel:9711558870" class="bg-gray-200 px-6 py-2 rounded-lg font-bold">Call Akash</a>
-        <a href="https://wa.me/917827760221" class="bg-emerald-700 text-white px-6 py-2 rounded-lg font-bold">WhatsApp</a>
+    <!-- 2. Sticky Action Sheet Panel (Bottom Action Tray) -->
+    <div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-200 shadow-2xl z-50 py-3 px-4">
+        <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
+            <!-- Calling Action -->
+            <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 text-emerald-800 py-1.5 rounded-xl transition border border-gray-200 text-center">
+                <i class="fa-solid fa-phone text-base mb-0.5"></i>
+                <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">Call Jignesh</span>
+            </a>
+            <!-- Alternative Calling Tray -->
+            <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 text-emerald-800 py-1.5 rounded-xl transition border border-gray-200 text-center">
+                <i class="fa-solid fa-phone-flip text-base mb-0.5"></i>
+                <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">Call Family</span>
+            </a>
+            <!-- Instant Messenger Node -->
+            <a href="https://wa.me/917827760221?text=Kua%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Manav%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-emerald-700 hover:bg-emerald-800 text-white py-1.5 rounded-xl transition shadow-md text-center">
+                <i class="fa-brands fa-whatsapp text-lg mb-0.5"></i>
+                <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-semibold">WhatsApp</span>
+            </a>
+        </div>
     </div>
 
+    <!-- Footer System Nodes -->
+    <footer class="bg-gray-100 text-gray-400 py-6 text-center text-[11px] mb-16">
+        <p class="font-royal text-gray-600 text-xs mb-1">Darshnabhilashi</p>
+        <p class="text-gray-500 font-medium mb-3">Samast Parivar</p>
+        <p>&copy; 2026 Kua Poojan Web Invitation System.</p>
+    </footer>
+
+    <!-- Activation Logic Engine scripts -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
-        function unlockInvitation() { document.getElementById('invitation-overlay').style.display = 'none'; }
+
+        // Falling Organic Green Leaves Layout Logic
+        function initiateLeaves() {
+            const container = document.getElementById('leaves-container');
+            for (let i = 0; i < 20; i++) {
+                let leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                
+                // Randomizing dimensional sizes
+                let size = Math.random() * 18 + 12;
+                leaf.style.width = size + 'px';
+                leaf.style.height = size + 'px';
+                leaf.style.left = Math.random() * 100 + 'vw';
+                leaf.style.top = -Math.random() * 20 + 'px';
+                container.appendChild(leaf);
+                
+                // Physics timeline curves for falling motions
+                gsap.to(leaf, {
+                    y: '105vh',
+                    x: '+=' + (Math.random() * 80 - 40),
+                    rotation: Math.random() * 720,
+                    duration: Math.random() * 5 + 5,
+                    delay: Math.random() * 4,
+                    repeat: -1,
+                    ease: 'linear'
+                });
+            }
+        }
+
+        // Overlay Unlock Mechanism
+        function unlockInvitation() {
+            gsap.to("#invitation-overlay", {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    document.getElementById('invitation-overlay').style.display = 'none';
+                    initiateLeaves();
+                    
+                    // Autoplay media trigger fallback loops
+                    const music = document.getElementById('inviteMusic');
+                    const video = document.getElementById('invitationVideo');
+                    if(music) music.play().catch(e => console.log("Audio block bypass active"));
+                    if(video) video.play().catch(e => console.log("Video block bypass active"));
+                }
+            });
+        }
+
+        // Dynamic Scrollytelling Scrub Engine Setup (Pinterest Look)
         gsap.utils.toArray(".panel-reveal").forEach((panel) => {
-            gsap.fromTo(panel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: panel, start: "top 80%" } });
+            gsap.fromTo(panel, 
+                { opacity: 0, scale: 0.9, y: 50, rotationX: -10 },
+                { 
+                    opacity: 1, 
+                    scale: 1, 
+                    y: 0, 
+                    rotationX: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: panel,
+                        start: "top 85%", 
+                        end: "top 45%",
+                        scrub: 1, // Elastic response transition
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
         });
     </script>
 </body>
