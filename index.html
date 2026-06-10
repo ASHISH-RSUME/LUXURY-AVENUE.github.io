@@ -3,294 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh | Kuan Poojan Animated Invitation</title>
-    <!-- Tailwind CSS -->
+    <title>Kuan Poojan | Shivansh</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- GSAP for Blockbuster Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0c0a09;
-            color: #f5f5f4;
-            overflow-x: hidden;
-        }
-        .font-royal {
-            font-family: 'Cinzel', serif;
-        }
-        .scroll-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            perspective: 1000px;
-        }
-        .gold-gradient {
-            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gold-border {
-            border-image: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728) 1;
-        }
-        /* Overlay Style */
-        #invitation-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        /* Falling Marigold Petals Layout */
-        .petal {
-            position: absolute;
-            background: radial-gradient(#fcd34d, #f59e0b);
-            border-radius: 50% 0 50% 50%;
-            opacity: 0.7;
-            pointer-events: none;
-            z-index: 10;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f7f4eb; color: #2c3e50; overflow-x: hidden; }
+        .font-royal { font-family: 'Cinzel', serif; }
+        .scroll-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 40px 16px; }
+        #invitation-overlay { position: fixed; inset: 0; background: #f7f4eb; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     </style>
 </head>
 <body>
 
-    <!-- 1. Pinterest Style Music Trigger & Welcome Cover -->
-    <div id="invitation-overlay" class="text-center px-4">
-        <div class="text-amber-400 text-6xl mb-6 animate-pulse">
-            <i class="fa-solid fa-om"></i>
+    <!-- 1. Opening Cover -->
+    <div id="invitation-overlay">
+        <div class="animate-pulse mb-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Krishna_flute.jpg/300px-Krishna_flute.jpg" class="w-32 h-32 rounded-full border-4 border-amber-600 shadow-xl">
         </div>
-        <h1 class="font-royal text-3xl md:text-5xl gold-gradient font-black tracking-widest mb-4">
-            || श्री गणेशाय नमः ||
-        </h1>
-        <p class="text-amber-200 text-lg md:text-xl font-light mb-12 italic">Kuan Poojan Shubh Aamantran</p>
-        
-        <button onclick="unlockInvitation()" class="bg-gradient-to-r from-amber-600 to-amber-800 text-white font-bold tracking-widest uppercase px-12 py-4 rounded-full text-lg shadow-2xl transform hover:scale-110 transition duration-300 border border-amber-400/50">
-            <i class="fa-solid fa-envelope-open-text mr-3"></i> Open Invitation
+        <h1 class="font-royal text-2xl text-emerald-900 font-bold mb-10">Kuan Poojan Invitation</h1>
+        <button onclick="unlockInvitation()" class="bg-emerald-900 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-emerald-950 transition">
+            Open Invitation
         </button>
     </div>
 
-    <!-- Hidden Audio Loop for Traditional Vibe -->
-    <audio id="inviteMusic" loop>
-        <source src="YOUR_MUSIC_LINK_HERE.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Falling Petals Background Container -->
-    <div id="petals-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
-
-    <!-- Main Dynamic Scroll Canvas -->
-    <div id="scroll-wrapper" class="w-full">
+    <!-- 2. Scrollable Sections -->
+    <div id="scroll-wrapper">
         
-        <!-- SECTION 1: HERO OVERVIEW & AI VIDEO PLACEHOLDER -->
-        <section class="scroll-section border-b border-amber-900/20 bg-stone-950">
-            <div class="text-center px-4 max-w-xl mx-auto panel-reveal">
-                <!-- AI Video Showcase Border Frame -->
-                <div class="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-full border-4 border-amber-500 p-1 bg-stone-900 shadow-2xl overflow-hidden mb-6 relative">
-                    <video id="invitationVideo" loop muted playsinline class="w-full h-full object-cover rounded-full">
-                        <source src="YOUR_VIDEO_LINK_HERE.mp4" type="video/mp4">
-                    </video>
+        <!-- Hero Section with Krishna Ji -->
+        <section class="scroll-section">
+            <div class="text-center panel-reveal">
+                <!-- Krishna Ji Image -->
+                <div class="mb-8">
+                    <img src="https://img.freepik.com/free-vector/lord-krishna-illustration_23-2149454657.jpg" class="w-48 h-48 mx-auto border-4 border-amber-500 rounded-2xl shadow-2xl mb-4">
+                    <p class="text-xs text-emerald-800 font-bold tracking-widest uppercase">|| श्री गणेशाय नमः ||</p>
                 </div>
-                <div class="inline-block bg-amber-500/10 px-6 py-1.5 rounded-full border border-amber-400/30 mb-4">
-                    <h2 class="font-royal text-2xl font-black text-amber-300 tracking-widest">SHIVANSH</h2>
-                </div>
-                <h1 class="font-royal text-4xl md:text-6xl font-extrabold gold-gradient mb-4">कुआँ पूजन</h1>
-                <p class="text-sm md:text-base text-stone-300 leading-relaxed font-light">
-                    Join us for a sacred prayer ceremony seeking blessings of health, happiness, prosperity and a bright future.
-                </p>
-                <div class="text-amber-500 text-sm mt-8 animate-bounce">
-                    <span class="block tracking-widest uppercase text-xs text-stone-500 mb-1">Scroll Down</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
+                <h1 class="font-royal text-5xl font-black text-emerald-950 mb-2">Kuan Poojan</h1>
+                <p class="text-gray-600 uppercase tracking-widest text-sm">of our son</p>
+                <h2 class="font-royal text-4xl font-extrabold text-amber-700 mt-2">SHIVANSH</h2>
             </div>
         </section>
 
-        <!-- SECTION 2: CARD STYLE INVITE TEXT -->
-        <section class="scroll-section bg-stone-900/50">
-            <div class="text-center px-6 max-w-2xl mx-auto panel-reveal bg-stone-950 p-8 md:p-12 rounded-[2.5rem] border-2 gold-border shadow-2xl">
-                <i class="fa-solid fa-gopuram text-4xl text-amber-500 mb-4"></i>
-                <h2 class="font-royal text-2xl md:text-3xl text-amber-300 font-bold mb-6">Aamantran (आमंत्रण)</h2>
-                <p class="text-stone-300 text-base md:text-lg leading-loose font-light">
-                    परमपिता परमात्मा की असीम कृपा से हमारे घर आए नन्हे मेहमान के स्वागत और <span class="text-amber-400 font-semibold">कुआँ पूजन</span> के पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं। कृपया समारोह में पधारकर बालक को अपना स्नेह एवं आशीर्वाद प्रदान करें।
-                </p>
+        <!-- Parents Name -->
+        <section class="scroll-section">
+            <div class="text-center panel-reveal bg-white p-10 rounded-[2rem] shadow-xl border-t-4 border-emerald-800">
+                <h2 class="font-royal text-3xl font-bold text-gray-800">Akash & Pooja</h2>
+                <p class="mt-4 text-gray-600">Aap sabhi s-parivar padhar kar balak Shivansh ko apna ashirwad pradan karein.</p>
             </div>
         </section>
 
-        <!-- SECTION 3: EXACT PROGRAM SCHEDULE -->
-        <section class="scroll-section bg-stone-950">
-            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-stone-900 p-8 rounded-[2.5rem] border border-amber-500/20 shadow-2xl">
-                <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/30">
-                    <i class="fa-solid fa-calendar-check text-2xl text-amber-400"></i>
+        <!-- Date & Venue -->
+        <section class="scroll-section">
+            <div class="text-center panel-reveal bg-white p-8 rounded-[2rem] shadow-xl">
+                <h2 class="font-royal text-2xl font-bold mb-4">Date & Time</h2>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <p class="text-4xl font-bold text-emerald-900">22 June 2026</p>
+                    <p class="text-amber-800 font-bold">4:00 PM</p>
                 </div>
-                <h2 class="font-royal text-2xl text-amber-300 font-bold mb-6">कार्यक्रम (Schedule)</h2>
-                
-                <div class="space-y-4 text-left">
-                    <div class="border-b border-stone-800 pb-3 flex justify-between items-center">
-                        <span class="text-stone-400 font-medium">दिनांक (Date):</span>
-                        <span class="text-amber-400 font-bold">Monday, 22nd June 2026</span>
-                    </div>
-                    <div class="border-b border-stone-800 pb-3 flex justify-between items-center">
-                        <span class="text-stone-400 font-medium">पूजन (Poojan):</span>
-                        <span class="text-stone-200">4:00 PM</span>
-                    </div>
-                    <div class="pb-2 flex justify-between items-center">
-                        <span class="text-stone-400 font-medium">भोज (Dinner):</span>
-                        <span class="text-stone-200">6:00 PM Onwards</span>
-                    </div>
-                </div>
+                <h2 class="font-royal text-2xl font-bold mt-8 mb-4">Venue</h2>
+                <p class="font-bold">Shiv Parvati Dharamshala</p>
+                <p class="text-gray-500 text-sm">Opp. Football Ground, Shahdara, Delhi</p>
             </div>
         </section>
-
-        <!-- SECTION 4: DETAILED VENUE MAP LINK -->
-        <section class="scroll-section bg-stone-900/30">
-            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-stone-950 p-8 rounded-[2.5rem] border border-amber-500/20 shadow-2xl">
-                <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/30">
-                    <i class="fa-solid fa-map-location-dot text-2xl text-amber-400"></i>
-                </div>
-                <h2 class="font-royal text-2xl text-amber-300 font-bold mb-4">स्थान (Venue)</h2>
-                <h3 class="text-xl font-bold text-stone-200 mb-2">Shiv Parvati Dharamshala</h3>
-                <p class="text-stone-400 text-sm leading-relaxed mb-6">
-                    Block D, Street Number 4,<br>
-                    Jyoti Nagar Extension, Block C,<br>
-                    Jyoti Nagar, Shahdara, Delhi, 110093
-                </p>
-                <a href="https://maps.google.com/?q=Shiv+Parvati+Dharamshala+Shahdara+Delhi" target="_blank" class="inline-block w-full text-center bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-semibold py-3 px-6 rounded-xl transition duration-300 shadow-lg">
-                    <i class="fa-solid fa-location-arrow mr-2"></i> Open in Google Maps
-                </a>
-            </div>
-        </section>
-
-        <!-- SECTION 5: THE PANCHAL FAMILY RELATIONS -->
-        <section class="scroll-section bg-stone-950">
-            <div class="text-center px-4 w-full max-w-2xl mx-auto panel-reveal">
-                <h2 class="font-royal text-xl text-amber-500 tracking-widest uppercase mb-8">With Warm Regards</h2>
-                <h3 class="font-royal text-3xl font-bold gold-gradient mb-8">The Panchal Family</h3>
-                
-                <div class="grid grid-cols-2 gap-4 max-w-md mx-auto text-sm">
-                    <div class="bg-stone-900 p-4 rounded-xl border border-stone-800">
-                        <p class="font-semibold text-stone-200">Akash</p>
-                        <p class="text-xs text-amber-500 mt-1">(Father)</p>
-                    </div>
-                    <div class="bg-stone-900 p-4 rounded-xl border border-stone-800">
-                        <p class="font-semibold text-stone-200">Pooja</p>
-                        <p class="text-xs text-amber-500 mt-1">(Mother)</p>
-                    </div>
-                    <div class="bg-stone-900 p-4 rounded-xl border border-stone-800">
-                        <p class="font-semibold text-stone-200">Mr. Sohanpal</p>
-                        <p class="text-xs text-amber-500 mt-1">(Grandfather)</p>
-                    </div>
-                    <div class="bg-stone-900 p-4 rounded-xl border border-stone-800">
-                        <p class="font-semibold text-stone-200">Smt. Devendari</p>
-                        <p class="text-xs text-amber-500 mt-1">(Mother)</p>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-6 border-t border-stone-900">
-                    <p class="text-xs text-stone-500 uppercase tracking-widest mb-2">Our Children</p>
-                    <p class="text-stone-300 font-medium text-sm"><i class="fa-solid fa-child text-amber-500 mr-2"></i>Shivansh / Yash (Son)</p>
-                    <p class="text-stone-300 font-medium text-sm mt-1"><i class="fa-solid fa-child-dress text-amber-500 mr-2"></i>Prisha / Savi (Daughter)</p>
-                </div>
-            </div>
-        </section>
-
     </div>
 
-    <!-- 2. Sticky Quick Action Panel at Bottom (Calling + WhatsApp) -->
-    <div class="fixed bottom-0 left-0 w-full bg-stone-950/90 backdrop-blur-md border-t border-amber-500/20 shadow-2xl z-50 py-3 px-4">
-        <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
-            <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-stone-900 hover:bg-stone-800 text-amber-400 py-2 rounded-xl transition border border-stone-800 text-center">
-                <i class="fa-solid fa-phone text-base mb-1"></i>
-                <span class="text-[9px] uppercase tracking-wider text-stone-400 font-semibold">Call Akash</span>
-            </a>
-            <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-stone-900 hover:bg-stone-800 text-amber-400 py-2 rounded-xl transition border border-stone-800 text-center">
-                <i class="fa-solid fa-phone-flip text-base mb-1"></i>
-                <span class="text-[9px] uppercase tracking-wider text-stone-400 font-semibold">Call Family</span>
-            </a>
-            <a href="https://wa.me/917827760221?text=Kuan%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Shivansh%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-xl transition shadow-lg text-center">
-                <i class="fa-brands fa-whatsapp text-lg mb-1"></i>
-                <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-semibold">WhatsApp</span>
-            </a>
-        </div>
+    <!-- Fixed Bottom Buttons -->
+    <div class="fixed bottom-0 w-full bg-white p-4 flex justify-between shadow-2xl border-t z-50">
+        <a href="tel:9711558870" class="bg-gray-200 px-6 py-2 rounded-lg font-bold">Call Akash</a>
+        <a href="https://wa.me/917827760221" class="bg-emerald-700 text-white px-6 py-2 rounded-lg font-bold">WhatsApp</a>
     </div>
 
-    <!-- JavaScript Engines Setup -->
     <script>
-        // Registering GSAP ScrollTrigger Global Plugin
         gsap.registerPlugin(ScrollTrigger);
-
-        // Falling Petals System Engine
-        function createPetals() {
-            const container = document.getElementById('petals-container');
-            for (let i = 0; i < 25; i++) {
-                let petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.style.width = Math.random() * 12 + 8 + 'px';
-                petal.style.height = Math.random() * 12 + 8 + 'px';
-                petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.top = -Math.random() * 20 + 'px';
-                container.appendChild(petal);
-                
-                // GSAP Floating Physics
-                gsap.to(petal, {
-                    y: '105vh',
-                    x: '+=' + (Math.random() * 100 - 50),
-                    rotation: Math.random() * 360,
-                    duration: Math.random() * 4 + 4,
-                    delay: Math.random() * 5,
-                    repeat: -1,
-                    ease: 'linear'
-                });
-            }
-        }
-
-        // Action Trigger to unlock experience & bypass browser autoplay block
-        function unlockInvitation() {
-            gsap.to("#invitation-overlay", {
-                opacity: 0,
-                duration: 0.6,
-                onComplete: () => {
-                    document.getElementById('invitation-overlay').style.display = 'none';
-                    createPetals();
-                    
-                    // Force Trigger Synced Playback
-                    const music = document.getElementById('bgMusic');
-                    const video = document.getElementById('invitationVideo');
-                    if(music) music.play().catch(err => console.log("Audio skipped"));
-                    if(video) video.play().catch(err => console.log("Video skipped"));
-                }
-            });
-        }
-
-        // Pinterest Dynamic Scroll Engine Setup
+        function unlockInvitation() { document.getElementById('invitation-overlay').style.display = 'none'; }
         gsap.utils.toArray(".panel-reveal").forEach((panel) => {
-            gsap.fromTo(panel, 
-                { opacity: 0, scale: 0.85, y: 70, rotationX: -15 },
-                { 
-                    opacity: 1, 
-                    scale: 1, 
-                    y: 0, 
-                    rotationX: 0,
-                    duration: 1.2,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: panel,
-                        start: "top 85%", 
-                        end: "top 35%",
-                        scrub: 1, // Gives the elastic smooth reel scrubbing effect on dragging
-                        toggleActions: "play none none reverse"
-                    }
-                }
-            );
+            gsap.fromTo(panel, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, scrollTrigger: { trigger: panel, start: "top 80%" } });
         });
     </script>
 </body>
