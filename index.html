@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh | Kua Poojan Animated Invitation</title>
+    <title>Shivansh | Kua Poojan Royal Invitation</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- GSAP for Scroll Animations -->
+    <!-- GSAP for 3D Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f7f4eb; 
-            color: #2c3e50;
+            background-color: #0c0a09; /* Premium Deep Royal Dark Base */
+            color: #f5f5f4;
             overflow-x: hidden;
         }
         .font-royal {
@@ -26,27 +26,51 @@
         }
         .scroll-section {
             min-height: auto;
-            padding: 24px 16px; /* Reduced padding to eliminate huge gaps between sections */
+            padding: 36px 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            perspective: 1200px; /* Enhanced perspective for true 3D effect */
+        }
+        /* Luxury Multi-shade Metallic Gold Gradient Text */
+        .gold-text-premium {
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));
+        }
+        /* Luxury Metallic Gold Gradient Border */
+        .gold-border-premium {
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #aa771c) 1;
         }
         .elegant-divider {
-            width: 150px;
+            width: 180px;
             height: 2px;
-            background: linear-gradient(to right, transparent, #2c5234, transparent);
-            margin: 10px auto;
+            background: linear-gradient(to right, transparent, #b38728, #fcf6ba, #b38728, transparent);
+            margin: 12px auto;
         }
         #invitation-overlay {
             position: fixed;
             inset: 0;
-            background: linear-gradient(rgba(247, 244, 235, 0.95), rgba(247, 244, 235, 0.98));
+            background: linear-gradient(rgba(12, 10, 9, 0.96), rgba(28, 25, 23, 0.99));
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border: 4px solid transparent;
+            border-image: linear-gradient(to bottom, #bf953f, #aa771c) 1;
+        }
+        /* Advanced 3D Container Rig styling */
+        .card-3d-rig {
+            background: rgba(28, 25, 23, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 2px rgba(253, 246, 186, 0.1);
+            transform-style: preserve-3d;
+            border: 1px solid rgba(191, 149, 63, 0.2);
         }
         /* Falling Green Leaves System Styles */
         .leaf {
@@ -54,18 +78,18 @@
             background-image: url('https://www.transparentpng.com/thumb/leaf/green-tea-leaf-png-clipart-9Vz8Xg.png');
             background-size: contain;
             background-repeat: no-repeat;
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
             z-index: 10;
         }
-        /* Premium Floating Heart System Styles */
+        /* Premium Floating Heart System Styles with Golden Aura */
         .heart-particle {
             position: absolute;
-            color: #e11d48;
-            opacity: 0.5;
+            color: #bf953f; /* Transformed to Gold Theme */
+            opacity: 0.6;
             pointer-events: none;
             z-index: 9;
-            filter: drop-shadow(0px 2px 5px rgba(225, 29, 72, 0.3));
+            filter: drop-shadow(0px 2px 8px rgba(252, 246, 186, 0.6));
         }
     </style>
 </head>
@@ -73,15 +97,15 @@
 
     <!-- 1. Interactive Opening Preloader Cover -->
     <div id="invitation-overlay" class="text-center px-4">
-        <div class="text-amber-600 text-6xl mb-4 animate-bounce">
+        <div class="text-amber-500 text-6xl mb-4 animate-bounce drop-shadow-[0_0_15px_rgba(252,246,186,0.5)]">
             <i class="fa-solid fa-om"></i>
         </div>
-        <h1 class="font-royal text-2xl md:text-4xl text-emerald-900 font-bold tracking-widest mb-2">
+        <h1 class="font-royal text-2xl md:text-4xl gold-text-premium font-black tracking-widest mb-2">
             || श्री गणेशाय नमः ||
         </h1>
-        <p class="text-gray-600 text-sm md:text-base mb-10 tracking-wide font-light">Kuan Poojan Shubh Aamantran</p>
+        <p class="text-amber-200/70 text-sm md:text-base mb-10 tracking-wide font-light italic">Kuan Poojan Shubh Aamantran</p>
         
-        <button onclick="unlockInvitation()" class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white font-bold tracking-widest uppercase px-10 py-3.5 rounded-full text-base shadow-xl transform hover:scale-105 transition duration-300">
+        <button onclick="unlockInvitation()" class="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-900 text-stone-950 font-extrabold tracking-widest uppercase px-12 py-4 rounded-full text-base shadow-[0_0_30px_rgba(179,135,40,0.5)] transform hover:scale-105 transition duration-300 border border-amber-300">
             <i class="fa-solid fa-envelope-open mr-2"></i> Open Invitation
         </button>
     </div>
@@ -95,25 +119,25 @@
     <div id="effects-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
 
     <!-- Scrollytelling Layout Canvas Wrapper -->
-    <div id="scroll-wrapper" class="w-full space-y-4 my-4">
+    <div id="scroll-wrapper" class="w-full space-y-8 my-4">
         
         <!-- MODULE 1: LANDING BANNER & MAIN DISPLAY BABY PHOTO -->
-        <section class="scroll-section bg-gradient-to-b from-[#efece3] to-[#f7f4eb]">
-            <div class="text-center px-4 max-w-xl mx-auto panel-reveal">
+        <section class="scroll-section bg-gradient-to-b from-[#1c1917] to-[#0c0a09]">
+            <div class="text-center px-4 max-w-xl mx-auto panel-reveal-3d">
                 <!-- Baby Photo Circle Frame Overlay Fitted with IMG-20260610-WA0022.png -->
-                <div class="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-full border-4 border-emerald-700 p-1 bg-white shadow-2xl overflow-hidden mb-4 flex items-center justify-center">
+                <div class="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-full border-4 border-amber-500 p-1 bg-stone-900 shadow-[0_0_40px_rgba(179,135,40,0.4)] overflow-hidden mb-6 flex items-center justify-center">
                     <img src="IMG-20260610-WA0022.png" alt="Shivansh" class="w-full h-full object-cover rounded-full">
                 </div>
                 
-                <p class="text-sm tracking-widest uppercase font-semibold text-emerald-800">Cordially invite you to grace the auspicious occasion of</p>
-                <h1 class="font-royal text-5xl md:text-6xl font-black text-emerald-950 mt-1 mb-1">Kua Poojan</h1>
+                <p class="text-xs md:text-sm tracking-widest uppercase font-semibold text-amber-400">Cordially invite you to grace the auspicious occasion of</p>
+                <h1 class="font-royal text-5xl md:text-6xl font-black gold-text-premium mt-2 mb-1">Kua Poojan</h1>
                 <div class="elegant-divider"></div>
                 
-                <p class="text-xs uppercase text-gray-400 tracking-widest">of our beloved son</p>
-                <h2 class="font-royal text-3xl md:text-4xl font-extrabold text-amber-700 tracking-wide mt-1 mb-4">SHIVANSH / YASH</h2>
+                <p class="text-xs uppercase text-stone-500 tracking-widest">of our beloved son</p>
+                <h2 class="font-royal text-3xl md:text-4xl font-extrabold text-amber-300 tracking-wide mt-2 mb-4 drop-shadow">SHIVANSH / YASH</h2>
                 
-                <div class="text-emerald-700 text-xs mt-6 animate-bounce">
-                    <span class="block tracking-widest uppercase mb-1">Scroll to view details</span>
+                <div class="text-amber-400 text-xs mt-8 animate-bounce">
+                    <span class="block tracking-widest uppercase mb-1 text-stone-500">Scroll to view details</span>
                     <i class="fa-solid fa-chevron-down text-sm"></i>
                 </div>
             </div>
@@ -121,81 +145,81 @@
 
         <!-- MODULE 2: REVEAL HOST NAMES -->
         <section class="scroll-section">
-            <div class="text-center px-6 w-full max-w-xl mx-auto panel-reveal bg-white p-6 md:p-10 rounded-[2rem] shadow-xl border-t-4 border-emerald-800">
-                <i class="fa-solid fa-people-roof text-4xl text-emerald-700 mb-2"></i>
-                <h3 class="text-gray-400 text-xs uppercase tracking-widest mb-1">With Warm Regards</h3>
-                <h2 class="font-royal text-2xl md:text-3xl font-bold text-gray-800 mb-2">The Panchal Family</h2>
+            <div class="text-center px-6 w-full max-w-xl mx-auto panel-reveal-3d card-3d-rig p-8 md:p-10 border-t-4 border-amber-500">
+                <i class="fa-solid fa-people-roof text-4xl text-amber-400 mb-3 drop-shadow-[0_0_8px_rgba(179,135,40,0.4)]"></i>
+                <h3 class="text-stone-400 text-xs uppercase tracking-widest mb-1">With Warm Regards</h3>
+                <h2 class="font-royal text-2xl md:text-3xl font-bold gold-text-premium mb-2">The Panchal Family</h2>
                 <div class="elegant-divider"></div>
-                <p class="text-gray-600 font-light text-sm md:text-base leading-relaxed mb-6">
-                    परमपिता परमात्मा की असीम कृपा से हमारे घर आए नन्हे मेहमान के स्वागत और कुआँ पूजन के पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं। कृपया समारोह में पधारकर बालक को अपना स्नेह एवं आशीर्वाद प्रदान करें।
+                <p class="text-stone-300 font-light text-sm md:text-base leading-relaxed mb-6">
+                    परमपिता परमात्मा की असीम कृपा से हमारे घर आए नन्हे मेहमान के स्वागत और कुआँ पूजन के पाvan अवसर पर आप सपरिवार सादर आमंत्रित हैं। कृपया समारोह में पधारकर बालक को अपना स्नेह एवं आशीर्वाद प्रदान करें।
                 </p>
                 
                 <div class="grid grid-cols-2 gap-3 text-sm max-w-md mx-auto">
-                    <div class="bg-amber-50/50 p-2 rounded-xl border border-amber-100">
-                        <p class="font-bold text-gray-800">Akash</p>
-                        <p class="text-[11px] text-emerald-800">(Father)</p>
+                    <div class="bg-stone-900/60 p-3 rounded-xl border border-amber-500/10">
+                        <p class="font-bold text-stone-200">Akash</p>
+                        <p class="text-[11px] text-amber-400 mt-0.5">(Father)</p>
                     </div>
-                    <div class="bg-amber-50/50 p-2 rounded-xl border border-amber-100">
-                        <p class="font-bold text-gray-800">Pooja</p>
-                        <p class="text-[11px] text-emerald-800">(Mother)</p>
+                    <div class="bg-stone-900/60 p-3 rounded-xl border border-amber-500/10">
+                        <p class="font-bold text-stone-200">Pooja</p>
+                        <p class="text-[11px] text-amber-400 mt-0.5">(Mother)</p>
                     </div>
-                    <div class="bg-amber-50/50 p-2 rounded-xl border border-amber-100">
-                        <p class="font-bold text-gray-800">Mr. Sohanpal</p>
-                        <p class="text-[11px] text-emerald-800">(Grandfather)</p>
+                    <div class="bg-stone-900/60 p-3 rounded-xl border border-amber-500/10">
+                        <p class="font-bold text-stone-200">Mr. Sohanpal</p>
+                        <p class="text-[11px] text-amber-400 mt-0.5">(Grandfather)</p>
                     </div>
-                    <div class="bg-amber-50/50 p-2 rounded-xl border border-amber-100">
-                        <p class="font-bold text-gray-800">Smt. Devendari</p>
-                        <p class="text-[11px] text-emerald-800">(Mother)</p>
+                    <div class="bg-stone-900/60 p-3 rounded-xl border border-amber-500/10">
+                        <p class="font-bold text-stone-200">Smt. Devendari</p>
+                        <p class="text-[11px] text-amber-400 mt-0.5">(Mother)</p>
                     </div>
                 </div>
                 
-                <div class="mt-4 pt-3 border-t border-gray-100">
-                    <p class="text-[11px] uppercase font-semibold text-gray-400 tracking-wider">Our Daughter</p>
-                    <p class="text-sm font-semibold text-gray-800"><i class="fa-solid fa-child-dress text-emerald-700 mr-1"></i> Prisha / Savi</p>
+                <div class="mt-6 pt-4 border-t border-stone-800">
+                    <p class="text-[11px] uppercase font-semibold text-stone-500 tracking-wider mb-1">Our Daughter</p>
+                    <p class="text-sm font-semibold text-stone-200"><i class="fa-solid fa-child-dress text-amber-400 mr-1.5"></i> Prisha / Savi</p>
                 </div>
             </div>
         </section>
 
-        <!-- MODULE 3: EXACT TIMINGS DOCK (Modified to show Kua Poojan instead of Jal Poojan) -->
+        <!-- MODULE 3: EXACT TIMINGS DOCK -->
         <section class="scroll-section">
-            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-white p-6 rounded-[2rem] shadow-xl">
-                <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-2 border border-emerald-100">
-                    <i class="fa-regular fa-clock text-lg text-emerald-800"></i>
+            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal-3d card-3d-rig p-8">
+                <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-3 border border-amber-500/20">
+                    <i class="fa-regular fa-clock text-lg text-amber-400"></i>
                 </div>
-                <h2 class="font-royal text-2xl text-gray-800 font-bold mb-4">Date & Time</h2>
+                <h2 class="font-royal text-2xl gold-text-premium font-bold mb-4">Date & Time</h2>
                 
-                <div class="grid grid-cols-3 items-center justify-center border-t border-b border-gray-200 py-3 my-1">
+                <div class="grid grid-cols-3 items-center justify-center border-t border-b border-stone-800 py-4 my-2">
                     <div class="text-center">
-                        <span class="block font-royal text-4xl font-bold text-emerald-900">22</span>
+                        <span class="block font-royal text-4xl font-bold text-amber-300">22</span>
                     </div>
-                    <div class="text-center border-l border-r border-gray-200 py-1">
-                        <span class="block text-xs uppercase tracking-widest text-emerald-800 font-semibold">MONDAY</span>
+                    <div class="text-center border-l border-r border-stone-800 py-1">
+                        <span class="block text-xs uppercase tracking-widest text-amber-400 font-semibold">MONDAY</span>
                     </div>
                     <div class="text-center">
-                        <span class="block text-xs uppercase tracking-widest text-gray-500 font-medium">JUNE 2026</span>
+                        <span class="block text-xs uppercase tracking-widest text-stone-400 font-medium">JUNE 2026</span>
                     </div>
                 </div>
                 
-                <div class="space-y-1 text-sm mt-3 text-center">
-                    <p class="text-gray-700"><span class="font-semibold">कुआँ पूजन (Poojan):</span> 4:00 PM</p>
-                    <p class="text-gray-700"><span class="font-semibold">भोज (Dinner):</span> 6:00 PM Onwards</p>
+                <div class="space-y-2 text-sm mt-4 text-center text-stone-300">
+                    <p><span class="font-semibold text-amber-400">कुआँ पूजन (Poojan):</span> 4:00 PM</p>
+                    <p><span class="font-semibold text-amber-400">भोज (Dinner):</span> 6:00 PM Onwards</p>
                 </div>
             </div>
         </section>
 
         <!-- MODULE 4: VENUE BLOCK WITH EMBED MAP LINK -->
         <section class="scroll-section">
-            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal bg-white p-6 rounded-[2rem] shadow-xl border-b-4 border-emerald-800">
-                <div class="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-2 border border-emerald-100">
-                    <i class="fa-solid fa-location-dot text-lg text-emerald-800"></i>
+            <div class="text-center px-6 w-full max-w-md mx-auto panel-reveal-3d card-3d-rig p-8 border-b-4 border-amber-500">
+                <div class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-3 border border-amber-500/20">
+                    <i class="fa-solid fa-location-dot text-lg text-amber-400"></i>
                 </div>
-                <h2 class="font-royal text-2xl text-gray-800 font-bold mb-2">Venue (स्थान)</h2>
-                <h3 class="text-base font-bold text-emerald-950 mb-1 leading-snug">Shiv Parvati Dharamshala</h3>
-                <p class="text-gray-500 text-xs md:text-sm leading-relaxed mb-4">
+                <h2 class="font-royal text-2xl gold-text-premium font-bold mb-3">Venue (स्थान)</h2>
+                <h3 class="text-base font-bold text-stone-100 mb-1 leading-snug">Shiv Parvati Dharamshala</h3>
+                <p class="text-stone-400 text-xs md:text-sm leading-relaxed mb-6">
                     Block D, Street Number 4, Jyoti Nagar Extension,<br>
                     Block C, Jyoti Nagar, Shahdara, Delhi, 110093
                 </p>
-                <a href="https://maps.google.com/?q=Shiv+Parvati+Dharamshala+Shahdara+Delhi" target="_blank" class="inline-block w-full bg-gradient-to-r from-emerald-800 to-teal-900 hover:from-emerald-900 hover:to-teal-950 text-white font-medium py-2.5 px-6 rounded-xl transition duration-300 shadow-md text-sm">
+                <a href="https://maps.google.com/?q=Shiv+Parvati+Dharamshala+Shahdara+Delhi" target="_blank" class="inline-block w-full bg-gradient-to-r from-amber-600 via-amber-700 to-amber-900 text-stone-950 font-bold py-3 px-6 rounded-xl transition duration-300 shadow-xl text-sm border border-amber-400/30">
                     <i class="fa-solid fa-map mr-1"></i> Direction on Google Maps
                 </a>
             </div>
@@ -203,11 +227,11 @@
 
         <!-- MODULE 5: BRANDING-FREE AUTOPLAY YOUTUBE INVITATION VIDEO -->
         <section class="scroll-section">
-            <div class="text-center px-4 w-full max-w-md mx-auto panel-reveal bg-white p-5 rounded-[2rem] shadow-xl border border-amber-500/20 relative">
-                <h3 class="font-royal text-lg font-bold text-amber-800 mb-3"><i class="fa-solid fa-film mr-1.5"></i> Invitation Video</h3>
+            <div class="text-center px-4 w-full max-w-md mx-auto panel-reveal-3d card-3d-rig p-5 relative">
+                <h3 class="font-royal text-lg font-bold gold-text-premium mb-3"><i class="fa-solid fa-film mr-1.5"></i> Invitation Video</h3>
                 
                 <!-- Seamless YouTube Container with Click-Blocker -->
-                <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-md relative bg-black">
+                <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl relative bg-black border border-amber-500/20">
                     <!-- Invisible layer to block direct YouTube interactions/watermarks -->
                     <div class="absolute inset-0 z-20 bg-transparent"></div>
                     
@@ -224,31 +248,31 @@
 
     </div>
 
-    <!-- 2. Sticky Action Sheet Panel (Bottom Bar Buttons) -->
-    <div class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md border-t border-gray-200 shadow-2xl z-50 py-3 px-4">
+    <!-- 2. Sticky Action Sheet Panel (Bottom Bar Buttons with Gold Touch) -->
+    <div class="fixed bottom-0 left-0 w-full bg-stone-950/95 backdrop-blur-md border-t border-amber-500/20 shadow-2xl z-50 py-3 px-4">
         <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
             <!-- Calling Action 1 -->
-            <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 text-emerald-800 py-1.5 rounded-xl transition border border-gray-200 text-center">
+            <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-stone-900 text-amber-400 hover:bg-stone-800 py-1.5 rounded-xl transition border border-amber-500/10 text-center">
                 <i class="fa-solid fa-phone text-base mb-0.5"></i>
-                <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">Call Akash</span>
+                <span class="text-[9px] uppercase tracking-wider text-stone-400 font-semibold">Call Akash</span>
             </a>
             <!-- Calling Action 2 -->
-            <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-gray-50 hover:bg-gray-100 text-emerald-800 py-1.5 rounded-xl transition border border-gray-200 text-center">
+            <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-stone-900 text-amber-400 hover:bg-stone-800 py-1.5 rounded-xl transition border border-amber-500/10 text-center">
                 <i class="fa-solid fa-phone-flip text-base mb-0.5"></i>
-                <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">Call Family</span>
+                <span class="text-[9px] uppercase tracking-wider text-stone-400 font-semibold">Call Family</span>
             </a>
             <!-- WhatsApp Action -->
-            <a href="https://wa.me/917827760221?text=Kuan%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Shivansh%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-emerald-700 hover:bg-emerald-800 text-white py-1.5 rounded-xl transition shadow-md text-center">
+            <a href="https://wa.me/917827760221?text=Kuan%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Shivansh%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-gradient-to-r from-emerald-600 to-emerald-800 text-white py-1.5 rounded-xl transition shadow-lg text-center font-semibold">
                 <i class="fa-brands fa-whatsapp text-lg mb-0.5"></i>
-                <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-semibold">WhatsApp</span>
+                <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-bold">WhatsApp</span>
             </a>
         </div>
     </div>
 
     <!-- Footer System Nodes -->
-    <footer class="bg-gray-100 text-gray-400 py-4 text-center text-[11px]">
-        <p class="font-royal text-gray-600 text-xs mb-0.5">Darshnabhilashi</p>
-        <p class="text-gray-500 font-medium mb-1">Samast Panchal Parivar</p>
+    <footer class="bg-stone-950 text-stone-500 py-5 text-center text-[11px] border-t border-stone-900">
+        <p class="font-royal text-amber-400 text-xs mb-0.5">Darshnabhilashi</p>
+        <p class="text-stone-400 font-medium mb-1">Samast Panchal Parivar</p>
         <p>&copy; 2026 Kua Poojan System Invitation.</p>
     </footer>
 
@@ -256,7 +280,7 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Ambient System for Leaves and Floating Hearts
+        // Ambient System for Leaves and Floating Gold Hearts
         function initiateEffects() {
             const container = document.getElementById('effects-container');
             
@@ -282,21 +306,21 @@
                 });
             }
 
-            // 2. Premium Dil (Hearts) Animation Flow
-            for (let j = 0; j < 12; j++) {
+            // 2. Premium Golden Glowing Hearts Animation Flow
+            for (let j = 0; j < 15; j++) {
                 let heart = document.createElement('i');
-                heart.className = 'fa-solid fa-heart heart-particle text-[10px] sm:text-sm';
+                heart.className = 'fa-solid fa-heart heart-particle text-[12px] sm:text-base';
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.top = (Math.random() * 30 + 100) + 'vh';
                 container.appendChild(heart);
 
-                // Upward floating motion for premium dil animation
+                // Fluid upward gold aura floating motion curves
                 gsap.to(heart, {
-                    y: '-120vh',
-                    x: '+=' + (Math.random() * 60 - 30),
-                    rotation: Math.random() * 180,
+                    y: '-125vh',
+                    x: '+=' + (Math.random() * 80 - 40),
+                    rotation: Math.random() * 240,
                     opacity: 0,
-                    duration: Math.random() * 3 + 4,
+                    duration: Math.random() * 3 + 5,
                     delay: Math.random() * 4,
                     repeat: -1,
                     ease: 'power1.out'
@@ -313,14 +337,13 @@
                     document.getElementById('invitation-overlay').style.display = 'none';
                     initiateEffects();
                     
-                    // Audio loop play
+                    // Audio loop play trigger
                     const music = document.getElementById('inviteMusic');
                     if(music) music.play().catch(e => console.log("Audio block bypass active"));
 
-                    // YouTube API Auto-unmute and play trigger workaround
+                    // YouTube API Autoplay unmute trigger sequence
                     const ytIframe = document.getElementById('ytInvitationFrame');
                     if (ytIframe) {
-                        // Posting message to YouTube API to un-mute and force sync playback
                         ytIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                         ytIframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
                     }
@@ -328,22 +351,23 @@
             });
         }
 
-        // Dynamic Scrollytelling Scrub Engine Setup (Pinterest Look)
-        gsap.utils.toArray(".panel-reveal").forEach((panel) => {
+        // Pro Level True 3D Scrollytelling Scrub Engine Setup (Cinema Flip Effect)
+        gsap.utils.toArray(".panel-reveal-3d").forEach((panel) => {
             gsap.fromTo(panel, 
-                { opacity: 0, scale: 0.95, y: 30, rotationX: -5 },
+                { opacity: 0, scale: 0.9, y: 40, rotationX: -25, rotationY: -10 },
                 { 
                     opacity: 1, 
                     scale: 1, 
                     y: 0, 
                     rotationX: 0,
-                    duration: 0.8,
-                    ease: "power1.out",
+                    rotationY: 0,
+                    duration: 0.9,
+                    ease: "power2.out",
                     scrollTrigger: {
                         trigger: panel,
-                        start: "top 90%", 
-                        end: "top 60%",
-                        scrub: 1, // Smooth responsive transition behavior
+                        start: "top 92%", 
+                        end: "top 55%",
+                        scrub: 1.2, // Ultra smooth 3D scrubbing physics feel
                         toggleActions: "play none none reverse"
                     }
                 }
