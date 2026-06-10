@@ -1,1 +1,314 @@
-new
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuan Poojan - Shivansh Celebration</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fffaf0;
+        }
+        .font-royal {
+            font-family: 'Cinzel', serif;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1545232979-8bf34eb9757b?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .gold-text {
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-btn {
+            background: linear-gradient(45deg, #bf953f, #b38728);
+            transition: all 0.3s ease;
+        }
+        .gold-btn:hover {
+            background: linear-gradient(45deg, #b38728, #bf953f);
+            box-shadow: 0px 4px 15px rgba(179, 135, 40, 0.4);
+        }
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #1c1917;
+            z-index: 9999;
+            display: flex;
+            flex-col: true;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .shimmer {
+            animation: shine 2s infinite linear;
+        }
+        @keyframes shine {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 selection:bg-amber-200">
+
+    <!-- Preloader Section -->
+    <div id="preloader" class="flex flex-col text-center px-4">
+        <div class="animate-spin text-amber-400 text-5xl mb-4">
+            <i class="fa-solid fa-om"></i>
+        </div>
+        <h2 class="font-royal text-3xl md:text-5xl gold-text font-bold tracking-widest shimmer">
+            Kuan Poojan Celebration
+        </h2>
+        <p class="text-amber-200/60 tracking-widest mt-2 text-xs uppercase">Loading Invitation...</p>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-bg h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <div class="absolute top-6 text-amber-400 font-royal text-2xl tracking-widest drop-shadow">
+            <i class="fa-solid fa-om"></i>
+        </div>
+        
+        <div class="mt-8">
+            <!-- Baby Picture Frame -->
+            <div class="w-36 h-36 md:w-40 md:h-40 mx-auto rounded-full border-4 border-amber-400 p-1 bg-white/20 backdrop-blur shadow-xl overflow-hidden mb-4">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=400&auto=format&fit=crop" alt="Shivansh" class="w-full h-full object-cover rounded-full">
+            </div>
+            <h2 class="font-royal text-2xl md:text-3xl font-bold text-amber-300 drop-shadow mb-2">SHIVANSH</h2>
+            
+            <p class="text-amber-400 tracking-widest uppercase text-sm font-semibold mb-2">Jai Shree Shiv Parvati</p>
+            <h1 class="font-royal text-5xl md:text-7xl font-bold gold-text mb-4 drop-shadow-lg">Kuan Poojan</h1>
+            <p class="text-lg md:text-xl text-gray-200 max-w-xl mx-auto font-light">
+                Join us for a sacred prayer ceremony seeking blessings of health, happiness, prosperity and a bright future.
+            </p>
+        </div>
+
+        <div class="flex items-center my-4 w-full max-w-xs justify-center gap-4">
+            <div class="h-[1px] bg-amber-400 w-full"></div>
+            <i class="fa-solid fa-heart text-amber-400 text-xs"></i>
+            <div class="h-[1px] bg-amber-400 w-full"></div>
+        </div>
+
+        <a href="#details" class="gold-btn text-white font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105">
+            View Details
+        </a>
+
+        <div class="absolute bottom-24 animate-bounce">
+            <a href="#details" class="text-amber-400 text-2xl"><i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </header>
+
+    <!-- Countdown Section -->
+    <section class="bg-stone-900 text-white py-10 px-4 shadow-xl">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="font-royal text-amber-400 text-xl mb-4 tracking-wider">The Sacred Ceremony Begins In</h3>
+            <div class="grid grid-cols-4 gap-3 max-w-md mx-auto">
+                <div class="bg-stone-800 p-3 rounded-xl border border-stone-700">
+                    <span id="days" class="block text-2xl font-bold text-amber-300">00</span>
+                    <span class="text-[10px] uppercase text-gray-400">Days</span>
+                </div>
+                <div class="bg-stone-800 p-3 rounded-xl border border-stone-700">
+                    <span id="hours" class="block text-2xl font-bold text-amber-300">00</span>
+                    <span class="text-[10px] uppercase text-gray-400">Hours</span>
+                </div>
+                <div class="bg-stone-800 p-3 rounded-xl border border-stone-700">
+                    <span id="minutes" class="block text-2xl font-bold text-amber-300">00</span>
+                    <span class="text-[10px] uppercase text-gray-400">Mins</span>
+                </div>
+                <div class="bg-stone-800 p-3 rounded-xl border border-stone-700">
+                    <span id="seconds" class="block text-2xl font-bold text-amber-300">00</span>
+                    <span class="text-[10px] uppercase text-gray-400">Secs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="details" class="py-16 px-4 max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="font-royal text-4xl font-bold text-amber-800 mb-2">कार्यक्रम और आमंत्रण</h2>
+            <div class="w-24 h-1 bg-amber-600 mx-auto rounded-full"></div>
+            <p class="mt-4 text-gray-600 max-w-xl mx-auto">हमारे घर आए नन्हे मेहमान के स्वागत और कुआँ पूजन के पावन अवसर पर आप सपरिवार सादर आमंत्रित हैं।</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-stretch mb-12">
+            <!-- Card 1: Schedule -->
+            <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="font-royal text-2xl font-bold text-amber-800">Date & Time</h4>
+                        <i class="fa-regular fa-calendar-days text-3xl text-amber-600"></i>
+                    </div>
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="flex justify-between items-center border-b pb-2">
+                            <span class="font-semibold">दिनांक (Date):</span>
+                            <span class="font-medium text-amber-900">Monday, 22nd June 2026</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b pb-2">
+                            <span class="font-semibold">पूजन (Poojan):</span>
+                            <span>4:00 PM</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b pb-2">
+                            <span class="font-semibold">भोज (Dinner):</span>
+                            <span>6:00 PM Onwards</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-6 p-4 bg-amber-50 rounded-xl border border-amber-200 text-sm text-amber-900 text-center font-medium">
+                    Your presence and blessings will make this occasion even more special and memorable.
+                </div>
+            </div>
+
+            <!-- Card 2: Venue -->
+            <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 border-amber-600 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="font-royal text-2xl font-bold text-amber-800">Venue (स्थान)</h4>
+                        <i class="fa-solid fa-map-location-dot text-3xl text-amber-600"></i>
+                    </div>
+                    <h5 class="text-xl font-bold text-gray-800 mb-2">Shiv Parvati Dharamshala</h5>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Block D, Street Number 4,<br>
+                        Jyoti Nagar Extension, Block C,<br>
+                        Jyoti Nagar, Shahdara, Delhi, 110093
+                    </p>
+                </div>
+                <a href="https://maps.google.com/?q=Shiv+Parvati+Dharamshala+Shahdara+Delhi" target="_blank" class="block text-center border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-semibold py-2 px-4 rounded-xl transition duration-300">
+                    <i class="fa-solid fa-location-arrow mr-2"></i> Open in Google Maps
+                </a>
+            </div>
+        </div>
+
+        <!-- Family Relations Section -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border-l-4 border-amber-600 max-w-3xl mx-auto">
+            <h3 class="font-royal text-2xl font-bold text-amber-800 text-center mb-6">With Warm Regards: The Panchal Family</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                <div class="p-2 bg-stone-50 rounded-xl">
+                    <p class="font-bold text-gray-800 text-base">Akash</p>
+                    <p class="text-xs text-amber-700">(Father)</p>
+                </div>
+                <div class="p-2 bg-stone-50 rounded-xl">
+                    <p class="font-bold text-gray-800 text-base">Pooja</p>
+                    <p class="text-xs text-amber-700">(Mother)</p>
+                </div>
+                <div class="p-2 bg-stone-50 rounded-xl">
+                    <p class="font-bold text-gray-800 text-base">Mr. Sohanpal</p>
+                    <p class="text-xs text-amber-700">(Grandfather)</p>
+                </div>
+                <div class="p-2 bg-stone-50 rounded-xl">
+                    <p class="font-bold text-gray-800 text-base">Smt. Devendari</p>
+                    <p class="text-xs text-amber-700">(Mother)</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 border-t pt-4 text-center">
+                <p class="text-sm font-semibold text-gray-500 mb-2">Our Children</p>
+                <p class="text-gray-800 font-bold"><i class="fa-solid fa-child text-amber-600 mr-1"></i> Shivansh / Yash (Son)</p>
+                <p class="text-gray-800 font-bold mt-1"><i class="fa-solid fa-child-dress text-amber-600 mr-1"></i> Prisha / Savi (Daughter)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP / Best Wishes Section -->
+    <section class="bg-amber-50/50 py-12 px-4 border-t border-b border-amber-100 mb-24">
+        <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
+            <h3 class="font-royal text-2xl text-center font-bold text-amber-800 mb-2">RSVP & Blessings</h3>
+            <form id="rsvpForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Aapka Naam</label>
+                    <input type="text" required class="w-full px-4 py-2 text-sm border rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Best Wishes Message</label>
+                    <textarea rows="2" class="w-full px-4 py-2 text-sm border rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none" placeholder="Write blessings for Shivansh..."></textarea>
+                </div>
+                <button type="submit" class="w-full gold-btn text-white font-bold py-2.5 rounded-xl text-sm transition shadow-md">
+                    Submit Blessings
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Fixed Premium Contact Action Bar (Bottom Navigation) -->
+    <div class="fixed bottom-0 left-0 w-full bg-stone-900/95 backdrop-blur-md border-t border-amber-500/30 shadow-2xl z-50 py-3 px-4">
+        <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
+            <!-- Calling Button 1 -->
+            <a href="tel:9711558870" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
+                <i class="fa-solid fa-phone text-lg mb-1"></i>
+                <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Akash</span>
+            </a>
+            <!-- Calling Button 2 -->
+            <a href="tel:7827760221" class="flex flex-col items-center justify-center bg-stone-800 hover:bg-stone-700 text-amber-400 py-2 rounded-xl transition border border-stone-700">
+                <i class="fa-solid fa-phone-flip text-lg mb-1"></i>
+                <span class="text-[9px] uppercase tracking-wider text-gray-300 font-medium">Call Family</span>
+            </a>
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/917827760221?text=Kuan%20Poojan%20ki%20baut%20baut%20badhaiyaan!%20Shivansh%20ko%20aashirwad." target="_blank" class="flex flex-col items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-xl transition shadow-lg">
+                <i class="fa-brands fa-whatsapp text-xl mb-1"></i>
+                <span class="text-[9px] uppercase tracking-wider text-emerald-100 font-medium">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-500 py-8 text-center text-xs mb-16">
+        <p class="font-royal text-amber-400 text-base mb-1">Darshnabhilashi</p>
+        <p class="text-gray-400 font-semibold mb-4">Samast Panchal Parivar</p>
+        <p>&copy; 2026 Kuan Poojan Invitation.</p>
+    </footer>
+
+    <!-- Scripts for Preloader and Timer -->
+    <script>
+        // Preloader fadeout
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 1200); // 1.2 seconds tak preloader chalega
+        });
+
+        // Set Target Countdown Date
+        const targetDate = new Date("June 22, 2026 16:00:00").getTime();
+
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your blessings for baby Shivansh! 🙏✨');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
